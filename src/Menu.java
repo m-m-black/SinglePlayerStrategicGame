@@ -1,4 +1,6 @@
-
+/*
+ * Menu class, shown below Grid during gameplay
+ */
 import java.awt.Container;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;

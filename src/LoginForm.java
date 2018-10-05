@@ -1,3 +1,6 @@
+/*
+ * LoginForm, shown when program starts
+ */
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -21,7 +24,7 @@ public class LoginForm extends JFrame implements ActionListener {
     		createWindow();
         setLocationAndSize();
         addComponentsToFrame();
-        addActionEvent();//calling addActionEvent() method
+        addActionEvent();
     }
     
     public void createWindow() {

@@ -1,4 +1,6 @@
-
+/*
+ * Monster class, subclass of Character
+ */
 public class Monster extends Character {
 	
 	private int speed;

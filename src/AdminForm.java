@@ -1,3 +1,6 @@
+/*
+ * AdminForm class, displayed if user logs in as admin
+ */
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -8,16 +11,13 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-
 @SuppressWarnings("serial")
 public class AdminForm extends JFrame implements ActionListener{
-	//change unit is not working currrently
+	//change unit is not working currently
 	JFrame frame = new JFrame();
-	//User user = new User();
 	String colums [] = {"Username", "Password", "Highest Score"};
 	DefaultTableModel model = new DefaultTableModel();
 	JTable table = new JTable();
-	//JScrollPane scrollPane = new JScrollPane(table);
 	JButton deleteButton = new JButton("Delete");
 	JButton backButton = new JButton("Back");
 	JButton updateButton = new JButton("Update");

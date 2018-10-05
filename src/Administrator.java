@@ -1,3 +1,7 @@
+/*
+ * Administrator class. 
+ * A type of user, but maintains information about StandardUsers
+ */
 import java.util.ArrayList;
 
 public class Administrator extends User {

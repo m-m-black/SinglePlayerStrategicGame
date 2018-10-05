@@ -1,4 +1,6 @@
-
+/*
+ * StandardUser class, for users playing the game
+ */
 public class StandardUser extends User {
 	
 	private int currentScore;

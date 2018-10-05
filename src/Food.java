@@ -1,4 +1,6 @@
-
+/*
+ * Food class. Player starts out with 2 Food objects, and can drop them on the Grid. 
+ */
 public class Food {
 	
 	private int x;

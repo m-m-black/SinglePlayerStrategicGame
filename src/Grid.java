@@ -1,10 +1,7 @@
 /*
- * Grid class to perform all painting and movement
+ * Grid class to perform all gameplay functions
  * All Cells, Players, Monsters to be initialized from Grid
  */
-
-//package game;
-
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
@@ -36,7 +33,6 @@ public class Grid extends JPanel implements KeyListener, ActionListener {
 	private HashMap<String, Cell> cellsHashMap;
 	private int lastKey; // int value of last key pressed
 	private boolean wasPressed = false; // to check if a key was pressed but direction did not change
-	//private User currentUser = null;
 	private ImageIcon playerImage;
 	private ImageIcon[] monsterImages;
 	private long time;
@@ -165,8 +161,6 @@ public class Grid extends JPanel implements KeyListener, ActionListener {
 	}
 	
 	public void paintFood(Graphics g) {
-		// if Food exists, display it
-		// if Food has been eaten, stop displaying it
 		for (Food food: foodArray) {
 			if (food != null && !(food.getEaten())) {
 				g.setColor(Color.BLACK);
@@ -190,37 +184,30 @@ public class Grid extends JPanel implements KeyListener, ActionListener {
 		if (foodCount > 0) {
 			checkIfFoodEaten();
 		}
-		// if a button was pressed, but direction did not change due to not being on an intersection,
-		// call the goUp/Down/Left/Right() method again until the change happens
+		// if a direction button was pressed, 
+		// but direction did not change due to not being on an intersection,
+		// keep calling changeDir() until the change happens
 		if (wasPressed) {
 			changeDir();
 		}
-		if (player.getUp()) {
-			player.moveUp();
-			repaint();
-		}
-		if (player.getDown()) {
-			player.moveDown();
-			repaint();
-		}
-		if (player.getLeft()) {
-			player.moveLeft();
-			repaint();
-		}
-		if (player.getRight()) {
-			player.moveRight();
-			repaint();
-		}
-		// move Monsters
+		player.movePlayer();
+		repaint();
+		moveMonsters();
+	}
+	
+	private void moveMonsters() {
 		if (hasStarted) {
-			pickRandomDir(monsters[0]);
-			checkDifference(monsters[1]);
-			for (Monster m: monsters) {
-				if (m.getCharX() == player.getCharX() && m.getCharY() == player.getCharY()) {
-					timer.stop();
-					// display Game Over message
-					Menu.showGameOver();
-				}
+			pickRandomDir(monsters[0]); // strategy for monster 1
+			checkDifference(monsters[1]); // strategy for monster 2
+			checkLosingCondition();
+		}
+	}
+	
+	private void checkLosingCondition() {
+		for (Monster m: monsters) {
+			if (m.getCharX() == player.getCharX() && m.getCharY() == player.getCharY()) {
+				timer.stop();
+				Menu.showGameOver();
 			}
 		}
 	}
@@ -243,7 +230,7 @@ public class Grid extends JPanel implements KeyListener, ActionListener {
 		}
 	}
 	
-	// Character move methods, applicable to Player and Monster objects
+	// Character steering methods, applicable to Player and Monster objects
 	public void turnUp(Character c) {
 		if (!c.getUp()) {
 			int charX = c.getCharX();

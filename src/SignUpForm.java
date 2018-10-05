@@ -1,8 +1,11 @@
+/*
+ * SignUpForm, shown if user selects Sign Up from LoginForm
+ */
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.Toolkit;
-@SuppressWarnings("serial")
 
+@SuppressWarnings("serial")
 public class SignUpForm extends JFrame implements ActionListener{
 	JFrame frame = new JFrame();
 	//User user = new User();

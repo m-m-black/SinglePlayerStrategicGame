@@ -1,4 +1,6 @@
-
+/*
+ * Main class for building GUI and starting game
+ */
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -9,8 +11,8 @@ import javax.swing.JPanel;
 
 public class Main {
 	
-	static Administrator admin; // made static so it can be accessed in Menu class
-	static JPanel gamePanel;
+	public static Administrator admin; // made static so it can be accessed in Menu class
+	private static JPanel gamePanel;
 	
 	public static void startGame() {
 		buildGUI();
@@ -44,9 +46,10 @@ public class Main {
 		menuPanel.setBackground(Color.WHITE);
 		contentPane.add(menuPanel);
 
-		// create Grid and add to gameplay panel
+		// create Grid, add to gameplay panel
 		Grid grid = new Grid();
-		gamePanel.add(grid);			
+		gamePanel.add(grid);		
+		// create Menu, add to menu panel
 		Menu menu = new Menu();
 		Menu.updateTimer();
 		menuPanel.add(menu.getMenu());
@@ -56,13 +59,14 @@ public class Main {
 		frame.setVisible(true);
 	}
 
-	public static void main(String[] args) {
-		
+	public static void run() {
 		new LoginForm();
 		admin = new Administrator("admin", "admin");
+		// add StandardUsers so some users pre-exist
 		admin.add(new StandardUser("Morgan","123"));
-		admin.add(new StandardUser("CHEN","123"));
-		
+		admin.add(new StandardUser("Chen","123"));
+		admin.add(new StandardUser("Wenting", "123"));
+		admin.add(new StandardUser("Dan", "123"));
 	}
 
 }

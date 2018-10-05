@@ -1,4 +1,3 @@
-
 /*
  * Character class, parent class of Player and Monster
  * Player and Monster share basic functionality - x and y location, and move methods

@@ -1,4 +1,6 @@
-
+/*
+ * User parent class
+ */
 public class User {
 	
 	protected String username;

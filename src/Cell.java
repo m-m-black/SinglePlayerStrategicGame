@@ -1,4 +1,6 @@
-
+/*
+ * Cell class. Grid is composed of individual Cells. 
+ */
 public class Cell {
 	/*
 	 * status indicates whether the cell can be traversed

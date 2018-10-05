@@ -1,4 +1,6 @@
-
+/*
+ * Player class, subclass of Character
+ */
 public class Player extends Character {
 	
 	private Food[] food;
@@ -28,6 +30,21 @@ public class Player extends Character {
 		// create 2 Food objects
 		for (int i = 0; i < 2; i++) {
 			food[i] = new Food();
+		}
+	}
+	
+	public void movePlayer() {
+		if (getUp()) {
+			moveUp();
+		}
+		if (getDown()) {
+			moveDown();
+		}
+		if (getLeft()) {
+			moveLeft();
+		}
+		if (getRight()) {
+			moveRight();
 		}
 	}
 
