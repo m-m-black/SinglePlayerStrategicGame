@@ -57,6 +57,7 @@ public class Main {
 		frame.pack();
 		frame.setResizable(false);
 		frame.setVisible(true);
+		frame.setLocationRelativeTo(null);
 	}
 
 	public static void run() {
