@@ -34,6 +34,7 @@ public class LoginForm extends JFrame implements ActionListener {
     		frame.setBounds(10, 10, 370, 600);
     		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     		frame.setResizable(false);
+	    	frame.setLocationRelativeTo(null);
     }
    
 
