@@ -7,27 +7,26 @@ import java.awt.event.*;
 
 @SuppressWarnings("serial")
 public class LoginForm extends JFrame implements ActionListener {
-	JFrame frame = new JFrame();
-	//User user= new User();
-	// Container container=getContentPane();
-    JLabel userLabel=new JLabel("USERNAME");
-    JLabel passwordLabel=new JLabel("PASSWORD");
-    JTextField userTextField=new JTextField();
-    JPasswordField passwordField=new JPasswordField();
-    JButton loginButton=new JButton("LOGIN");
-    JButton resetButton=new JButton("RESET");
-    JButton signupButton= new JButton("SIGNUP");
-    JCheckBox showPassword=new JCheckBox("Show Password");
-    boolean loginStatus = false; 
+	
+	private JFrame frame = new JFrame();
+	private JLabel userLabel = new JLabel("USERNAME");
+    private JLabel passwordLabel = new JLabel("PASSWORD");
+    private JTextField userTextField = new JTextField();
+    private JPasswordField passwordField = new JPasswordField();
+    private JButton loginButton = new JButton("LOGIN");
+    private JButton resetButton = new JButton("RESET");
+    private JButton signupButton = new JButton("SIGNUP");
+    private JCheckBox showPassword = new JCheckBox("Show Password");
+    //private boolean loginStatus = false; 
  
-    LoginForm() {
+    public LoginForm() {
     		createWindow();
         setLocationAndSize();
         addComponentsToFrame();
         addActionEvent();
     }
     
-    public void createWindow() {
+    private void createWindow() {
     		frame.setTitle("Misfit");
     		frame.setVisible(true);
     		frame.getContentPane().setLayout(null);
@@ -38,18 +37,18 @@ public class LoginForm extends JFrame implements ActionListener {
     }
    
 
-    public void setLocationAndSize() {
-    		userLabel.setBounds(50,150,100,30);
-    		passwordLabel.setBounds(50,220,100,30);
-    		userTextField.setBounds(150,150,150,30);
-    		passwordField.setBounds(150,220,150,30);
-    		showPassword.setBounds(150,250,150,30);
-    		loginButton.setBounds(50,300,100,30);
-    		signupButton.setBounds(200,300,100,30);
-    		resetButton.setBounds(200,500,100,30);
-    }
+    private void setLocationAndSize() {
+		userLabel.setBounds(50,150,100,30);
+		passwordLabel.setBounds(50,220,100,30);
+		userTextField.setBounds(150,150,150,30);
+		passwordField.setBounds(150,220,150,30);
+		showPassword.setBounds(150,250,150,30);
+		loginButton.setBounds(50,300,100,30);
+		signupButton.setBounds(200,300,100,30);
+		resetButton.setBounds(200,500,100,30);
+}
    
-    public void addComponentsToFrame() {
+    private void addComponentsToFrame() {
     		frame.add(userLabel);
     		frame.add(passwordLabel);
     		frame.add(userTextField);
@@ -73,12 +72,12 @@ public class LoginForm extends JFrame implements ActionListener {
     		Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
 	}
    
-    @SuppressWarnings("deprecation")
-    public boolean loginVerify() {
+    private boolean loginVerify() {
     		String userText;
 	   	String pwdText;
 	   	userText = userTextField.getText();
-	   	pwdText = passwordField.getText();
+	   	//pwdText = passwordField.getPassword().toString();
+	   	pwdText = String.valueOf(passwordField.getPassword());
 	   	if (userText.equalsIgnoreCase("admin") && pwdText.equalsIgnoreCase("admin")) {
 	   		return true;
 	   	} else {
@@ -113,8 +112,6 @@ public class LoginForm extends JFrame implements ActionListener {
     			}
     		}     
     		if(e.getSource() == signupButton) {  
-    			// LoginForm m = new LoginForm();
-	        	// m.setVisible(false) 
     			frame.dispose();
     			new SignUpForm();	        	
     		}
