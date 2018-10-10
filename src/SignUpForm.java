@@ -6,28 +6,27 @@ import java.awt.event.*;
 import java.awt.Toolkit;
 
 @SuppressWarnings("serial")
-public class SignUpForm extends JFrame implements ActionListener{
-	JFrame frame = new JFrame();
-	//User user = new User();
-	//Creating Objects
-	JLabel userLabel=new JLabel("USERNAME");
-	JLabel passwordLabel=new JLabel("PASSWORD");
-	JLabel confirmPasswordLabel=new JLabel("CONFIRM PASSWORD");
-	JTextField usernameTextField=new JTextField();
-	JPasswordField passwordField=new JPasswordField();
-	JPasswordField confirmPasswordField=new JPasswordField();
-	JButton registerButton=new JButton("REGISTER");
-	JButton resetButton=new JButton("RESET");
-	JButton backButton = new JButton("Back");
+public class SignUpForm extends JFrame implements ActionListener {
 	
-	SignUpForm() {
+	private JFrame frame = new JFrame();
+	private JLabel userLabel=new JLabel("USERNAME");
+	private JLabel passwordLabel=new JLabel("PASSWORD");
+	private JLabel confirmPasswordLabel=new JLabel("CONFIRM PASSWORD");
+	private JTextField usernameTextField=new JTextField();
+	private JPasswordField passwordField=new JPasswordField();
+	private JPasswordField confirmPasswordField=new JPasswordField();
+	private JButton registerButton=new JButton("REGISTER");
+	private JButton resetButton=new JButton("RESET");
+	private JButton backButton = new JButton("Back");
+	
+	public SignUpForm() {
 		createWindow();
 		setLocationAndSize();
 		addComponentsToFrame();
 		actionEvent();
 	}
 	    
-	public void createWindow() {
+	private void createWindow() {
 		frame.setTitle("Misfit Registration");
 		frame.setBounds(10,10,370,600);
 		//frame.getContentPane().setBackground(Color.pink);
@@ -38,7 +37,7 @@ public class SignUpForm extends JFrame implements ActionListener{
 		frame.setLocationRelativeTo(null);
 	}
 	
-	public void setLocationAndSize() {
+	private void setLocationAndSize() {
 		userLabel.setBounds(20,150,100,30);
 		passwordLabel.setBounds(20,220,100,30);
 		confirmPasswordLabel.setBounds(20,290,140,30);
@@ -50,7 +49,7 @@ public class SignUpForm extends JFrame implements ActionListener{
 		resetButton.setBounds(200,500,100,30);
 	}
 	
-	public void addComponentsToFrame() {
+	private void addComponentsToFrame() {
 		frame.add(userLabel);
 		frame.add(passwordLabel);
 		frame.add(confirmPasswordLabel);
@@ -73,7 +72,6 @@ public class SignUpForm extends JFrame implements ActionListener{
 		backButton.addActionListener(this);
 	}
 	
-	@SuppressWarnings("deprecation")
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == backButton) {
@@ -87,12 +85,12 @@ public class SignUpForm extends JFrame implements ActionListener{
 		}
 		if (e.getSource() == registerButton) {
 			if(usernameTextField.getText().equals("")
-					||passwordField.getText().equals("")
-					||confirmPasswordField.getText().equals("")) {
+					||passwordField.getPassword().equals("")
+					||confirmPasswordField.getPassword().equals("")) {
 				JOptionPane.showMessageDialog(this,  "Fields will not be blank");
 			} else {   
-				if (passwordField.getText().equalsIgnoreCase(confirmPasswordField.getText())) {   
-					Main.admin.add(new StandardUser(usernameTextField.getText(),passwordField.getText()));
+				if (String.valueOf(passwordField.getPassword()).equalsIgnoreCase(String.valueOf(confirmPasswordField.getPassword()))) {   
+					Main.admin.add(new StandardUser(usernameTextField.getText(),String.valueOf(passwordField.getPassword())));
 					JOptionPane.showMessageDialog(this,"Successfully Registered");
 				} else {
 					JOptionPane.showMessageDialog(this,"Password doesn't match, please try again!");
