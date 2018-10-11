@@ -8,8 +8,8 @@ import java.awt.event.*;
 @SuppressWarnings("serial")
 public class LoginForm extends JFrame implements ActionListener {
 	
-	private JFrame frame = new JFrame();
-	private JLabel userLabel = new JLabel("USERNAME");
+    private JFrame frame = new JFrame();
+    private JLabel userLabel = new JLabel("USERNAME");
     private JLabel passwordLabel = new JLabel("PASSWORD");
     private JTextField userTextField = new JTextField();
     private JPasswordField passwordField = new JPasswordField();
